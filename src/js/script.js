@@ -11,7 +11,7 @@ const loadData = async () => {
             const btn = document.createElement('button');
             btn.className = 'list';
             btn.innerText = category;
-            btn.addEventListener('click', () => handleOnClick(category));
+            btn.addEventListener('click', () => buttonClick(category));
 
             nav.appendChild(btn);  
 
@@ -24,16 +24,16 @@ loadData();
 
 
 
-const handleOnClick = async (category) => {
+const buttonClick = async (category) => {
     const response = await fetch(`https://classes.codingbootcamp.cz/assets/classes/602/guardian.php?cat=${category}`);
     const data = await response.json();
 
-    const bookItemElem = document.querySelector('ul');
-    bookItemElem.innerHTML = '';
-    data.data.channel.item.forEach((book) => {
-        const bookElem = document.createElement('li');
-        bookElem.innerText = book.title;
-        bookItemElem.appendChild(bookElem);
+    const artItemElem = document.querySelector('ul');
+    artItemElem.innerHTML = '';
+    data.data.channel.item.forEach((art) => {
+        const artElem = document.createElement('li');
+        artElem.innerText = art.title;
+        artItemElem.appendChild(artElem);
     })
 }
 
